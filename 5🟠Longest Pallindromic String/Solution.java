@@ -1,0 +1,42 @@
+class Solution {
+    public String longestPalindrome(String s) {
+        if(s.length()==0||s.length()==1){
+            return s;
+        }
+        String LPS="";
+        for(int i=1;i<s.length();i++){
+            int low=i;
+            int high=i;
+            //for odd length pallindrome
+            while(s.charAt(low)==s.charAt(high)){
+                low--;
+                high++;
+                if(low==-1||high==s.length()){
+                    break;
+                }
+            }
+            String pallindrome=s.substring(low+1,high);
+            if(pallindrome.length()>LPS.length()){
+                LPS=pallindrome;
+            }
+            //for even length pallindrome
+             low=i-1;
+             high =i;
+            while(s.charAt(low)==s.charAt(high)){
+                low--;
+                high++;
+                if(low==-1||high==s.length()){
+                    break;
+                }
+
+            }
+            pallindrome=s.substring(low+1,high);
+            if(pallindrome.length()>LPS.length()){
+                LPS=pallindrome;
+            }
+
+
+        }
+        return LPS;
+    }
+}
