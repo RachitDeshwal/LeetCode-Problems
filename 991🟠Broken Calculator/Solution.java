@@ -1,24 +1,15 @@
 class Solution {
     public int brokenCalc(int startValue, int target) {
-        int numOp=0;
-        while(startValue!=target){
-            if(startValue*2==target){
-                numOp++;
-                startValue*=2;
-            }
-            else if(startValue*2==target+1){
-                startValue*=2;
-                numOp++;
-            }
-            else if(startValue*2<target){
-                startValue*=2;
-                numOp++;
+        int ops=0;
+        while(target>startValue){
+            if(target%2==0){
+                target/=2;
             }
             else{
-                startValue--;
-                numOp++;
+                target+=1;
             }
+            ops++;
         }
-        return numOp;
+        return ops +(startValue-target);
     }
 }
